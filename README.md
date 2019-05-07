@@ -1,4 +1,4 @@
-# rbc_parser
+# RBC.RU parser
 Скрипт для парсинга 15 новостей с главной страницы www.rbc.ru
 
 
