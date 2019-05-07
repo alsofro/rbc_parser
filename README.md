@@ -28,5 +28,5 @@
 
 Для работоспособности скрипта необходимо установить 2 библиотеки:
 
-pip3 install beautifulsoup4
-pip3 install lxml
+1. pip3 install beautifulsoup4
+2. pip3 install lxml
