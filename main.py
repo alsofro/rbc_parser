@@ -35,8 +35,7 @@ def main():
         article = soup.find('div', class_='article')
         category = article.find('a', class_='article__header__category')
         date = article.find('span', class_='article__header__date').get('content').replace('T', ' ').split('+')[0]
-        title = article.find('span', class_='js-slide-title').text
-        overview = article.find('div', class_='article__text__overview').find('span').text.replace('\xa0', '')
+        title = article.find('span', class_='js-slide-title')
         image = article.find('div', class_='article__main-image')
         article_paragraphs = article.find_all('p')
         article_text = ''
@@ -46,11 +45,14 @@ def main():
         # Заполняем полученными данными news_data
         news_data[name]['link'] = link
         news_data[name]['date'] = date
-        news_data[name]['title'] = title
-        news_data[name]['text'] = article_text.replace('\xa0', '').replace('\n', '')
-        news_data[name]['overview'] = overview
+        news_data[name]['text'] = article_text.replace('\xa0', '').replace('\n', '').replace('\r', '')
+
         try:
-            news_data[name]['category'] = category.text
+            news_data[name]['title'] = title.text
+        except AttributeError:
+            news_data[name]['title'] = 'Без заголовка'
+        try:
+            news_data[name]['category'] = category.text.replace('\n', '')
         except AttributeError:
             news_data[name]['category'] = 'Без категории'
         try:
