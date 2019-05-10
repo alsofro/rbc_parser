@@ -26,9 +26,9 @@ def main():
     # Для каждой ссылки получаем информацию и записываем в news_data
     for i in range(15):
 
-        name = 'New_{0}'.format(i + 1)
-        news_data[name] = {}
         link = news_links[i].get('href').split('?')[0]
+        name = link
+        news_data[name] = {}
         soup = get_soup(link)
 
         # Переходим на страницу для дальнейшенго парсинга
